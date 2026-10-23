@@ -19,4 +19,12 @@ def create_app(config: dict | None = None) -> Flask:
     db.init_schema(conn)
     conn.close()
     app.teardown_appcontext(db.close_db)
+
+    from .api import bp
+    app.register_blueprint(bp)
+
+    @app.get("/")
+    def index():
+        return app.send_static_file("index.html")
+
     return app

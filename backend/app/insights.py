@@ -3,6 +3,7 @@
 Medians/percentiles are computed in Python rather than SQL because SQLite has no
 percentile function; for 10k rows this is a few milliseconds.
 """
+from __future__ import annotations
 from collections import defaultdict
 
 from . import repository as repo

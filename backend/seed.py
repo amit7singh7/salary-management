@@ -4,6 +4,7 @@
     python seed.py --reset      # wipe employees first
     python seed.py -n 500 --seed 7
 """
+from __future__ import annotations
 import argparse
 import random
 from datetime import date, timedelta

@@ -1,4 +1,5 @@
 """Input validation for employee payloads. Pure functions: no DB, no Flask."""
+from __future__ import annotations
 import re
 from datetime import date
 

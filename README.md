@@ -3,7 +3,7 @@
 Web app for an HR manager to manage salary data for ~10,000 employees across countries and answer
 "how do we pay people?" — see [`docs/requirements.md`](docs/requirements.md) for scope.
 
-**Stack:** Python 3.12 · Flask · SQLite · React 18 (+ htm, no build step) · unittest
+**Stack:** Python 3.9+ · Flask · SQLite · React 18 (+ htm, no build step) · unittest
 
 ## Run locally
 ```bash
@@ -20,7 +20,7 @@ The UI loads React, htm and fonts from CDNs (pinned versions), so the browser ne
 
 ## Test & benchmark
 ```bash
-make test      # 50 fast, deterministic tests (~0.5s)
+make test      # (use `python3 -m unittest discover -s . -t . -p "test_*.py"` from backend/ if `python` is not found) 50 fast, deterministic tests (~0.5s)
 make bench     # latency of each endpoint on the seeded DB
 ```
 

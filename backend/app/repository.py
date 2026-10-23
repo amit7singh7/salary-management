@@ -1,4 +1,5 @@
 """All SQL lives here. Functions take an open sqlite3 connection."""
+from __future__ import annotations
 import sqlite3
 from datetime import date
 

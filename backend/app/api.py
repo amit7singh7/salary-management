@@ -96,3 +96,28 @@ def delete_employee(employee_id):
     if not repo.delete_employee(get_db(), employee_id):
         return _not_found()
     return "", 204
+
+
+# ---- insights -------------------------------------------------------------
+from . import insights  # noqa: E402
+
+
+@bp.get("/summary")
+def summary():
+    return jsonify(insights.company_summary(get_db(), _filters_from_query()))
+
+
+@bp.get("/insights")
+def pay_insights():
+    group_by = request.args.get("group_by", "country")
+    if group_by not in insights.GROUP_BY_FIELDS:
+        return jsonify(error="invalid_group_by",
+                       allowed=list(insights.GROUP_BY_FIELDS)), 400
+    return jsonify(group_by=group_by,
+                   groups=insights.group_stats(get_db(), group_by, _filters_from_query()))
+
+
+@bp.get("/insights/distribution")
+def pay_distribution():
+    return jsonify(buckets=insights.distribution(get_db(), _filters_from_query()),
+                   bucket_width_usd=insights.BUCKET_USD)

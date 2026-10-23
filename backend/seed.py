@@ -115,9 +115,13 @@ if __name__ == "__main__":
     parser.add_argument("-n", type=int, default=10_000, help="number of employees")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--reset", action="store_true")
+    parser.add_argument("--if-empty", action="store_true", help="do nothing if employees already exist")
     args = parser.parse_args()
     path = os.environ.get("DATABASE", os.path.join(os.path.dirname(os.path.abspath(__file__)), "salary.db"))
     conn = db.connect(path)
     db.init_schema(conn)
+    if args.if_empty and conn.execute("SELECT COUNT(*) FROM employees").fetchone()[0]:
+        print("Database already seeded; skipping.")
+        raise SystemExit(0)
     count = seed(conn, args.n, args.seed, args.reset)
     print(f"Seeded {count} employees into {path}")

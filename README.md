@@ -48,7 +48,7 @@ docs/          requirements.md · design-notes.md · ai-usage.md
 ```
 
 ## Pre-submission checklist
-- [ ] Click through the UI once (add, edit salary, delete, filters, both insight tabs)
-- [ ] Deploy (Dockerfile works on Render / Fly.io / Railway) and put the URL here
-- [ ] Record the short demo video
-- [ ] Update `docs/ai-usage.md` with your own real prompts
+- [x] Click through the UI once (add, edit salary, delete, filters, both insight tabs)
+- [x] Deploy (Dockerfile works on Render / Fly.io / Railway) and put the URL here: https://salary-management-zrk9.onrender.com
+- [x] Record the short demo video: https://drive.google.com/file/d/1LNLqiPefxGRzACyM7yCQQp-LTPAfEBV4/view
+- [x] Update `docs/ai-usage.md` with your own real prompts
